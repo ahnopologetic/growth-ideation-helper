@@ -18,4 +18,6 @@ const StyledGrowthSubmitButton = styled.button`
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
+    align-self: center;
+    cursor: pointer;
 `

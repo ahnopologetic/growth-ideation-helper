@@ -1,20 +1,21 @@
 import { Headline2, Subtitle1 } from '@class101/ui';
 import React from 'react';
-import { ElementLike } from 'react-hook-form';
 import styled from 'styled-components';
 import { GrowthInput } from './GrowthInput';
+import { ElementLike, NestDataObject } from 'react-hook-form';
 
 type Props = {
     title: string;
     description?: string;
     inputName?: string
-    errors: any;
+    errors: NestDataObject<Record<string, any>>;
+    register?: (ref: ElementLike | null) => void;
 }
-export const GrowthSection = React.forwardRef<any, Props>(({ title, description, inputName, errors }, ref) => (
+export const GrowthSection = React.memo(({ title, description, inputName, errors, register }: Props) => (
     <Container>
         <Headline2>{title}</Headline2>
         <Subtitle1>{description}</Subtitle1>
-        <GrowthInput name={inputName ? inputName : title} ref={ref} errors={errors} />
+        <GrowthInput name={inputName ? inputName : title} register={register} errors={errors} />
     </Container>
 ))
 const Container = styled.div`
